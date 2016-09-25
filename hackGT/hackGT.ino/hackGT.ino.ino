@@ -22,13 +22,14 @@ int count = 0;
 void loop() {
   while (digitalRead(2) == HIGH) {}
   // put your main  code here, to run repeatedly:
+  count = millis();
   delay(100);
   bool keepGoing = true;
   while (keepGoing) {
     Serial.println(digitalRead(2));
     if ((pos == 40) || (pos == 130)) {
       inc = inc * -1;
-      if (millis() % 3 == 0) {
+      if (millis() % 4 == 0) {
         keepGoing = false;
       }
     }
@@ -40,7 +41,7 @@ void loop() {
       count++;
     }
   }
-  count = count%1023;
+  count = count % 1023;
   digitalWrite(7,HIGH);
   analogWrite(5, count);
 }

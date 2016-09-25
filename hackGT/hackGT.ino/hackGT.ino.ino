@@ -20,7 +20,7 @@ void setup() {
 int inc = 5;
 int count = 0;
 void loop() {
-  while (digitalRead(2) == LOW) {}
+  while (digitalRead(2) == HIGH) {}
   // put your main  code here, to run repeatedly:
   delay(100);
   bool keepGoing = true;
@@ -40,6 +40,7 @@ void loop() {
       count++;
     }
   }
+  count = count%1023;
   digitalWrite(7,HIGH);
   analogWrite(5, count);
 }
